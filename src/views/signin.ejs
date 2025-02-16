@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Home</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .card {
+            height: auto; /* Adjusts height to fit content */
+            max-width: 800px; /* Limits width to avoid stretching */
+            border-radius: 1rem; /* Rounded corners for the card */
+        }
+
+        .card img {
+            height: 100%;
+            object-fit: cover; /* Ensures proper fitting without stretching */
+            border-radius: 1rem 0 0 1rem;
+            background-color: #9A616D;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container .form-outline input {
+            border-radius: 8px;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .text-muted a {
+            color: #6c757d !important;
+        }
+
+        /* Adjustments for responsiveness */
+        @media (max-width: 576px) {
+            .card {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+
+    <%- include('./partials/nav') %>
+
+    <section class="d-flex align-items-center justify-content-center vh-100 w-100" style="background-color: #9A616D;">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-8 col-lg-6">
+                    <!-- <div class="card d-flex flex-row" style="background-color: #9A616D"> -->
+                        <div class="row g-0 w-100">
+
+                            <!-- Form Column -->
+                            <div class="d-flex justify-content-center align-items-center vh-100">
+                                <div class="form-container">
+                                    <form action="/user/signin" method="POST">
+                                        <!-- Logo section -->
+                                        <div class="text-center mb-3">
+                                            <span class="h1 fw-bold">BloGiFY</span>
+                                        </div>
+                                    
+                                        <h5 class="fw-normal mb-3 text-center">Sign in</h5>
+                                    
+                                        <!-- Email input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required />
+                                        </div>
+                                    
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
+                                        </div>
+                                    
+                                        <!-- Sign-in button -->
+                                        <div class="text-center">
+                                            <button class="btn btn-dark btn-lg w-100" type="submit">Sign in</button>
+                                        </div>
+
+                                        <!-- register -->
+                                        <div class="text-center mt-3">
+                                            <span class="text-muted">Don't have an account? <a href="/user/signup">Sign up</a></span>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('./partials/scripts.js') %>
+
+</body>
+</html>

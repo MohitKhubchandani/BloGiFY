@@ -45,8 +45,28 @@ UserSchema.pre('save', function(next) {
     this.password = hashedPassword;
 
     next();
-})
+});
 
+UserSchema.static('matchPassword', async function(email, password) {
+    const user = await this.findOne({ email });
+    if(!user) {
+        throw new Error('Invalid email');
+    };
+
+    const salt = user.salt;
+    const hashedPassword = user.password;
+
+    const userProvidedHash = createHmac('sha256', salt)
+    .update(password)
+    .digest('hex');
+
+    if(userProvidedHash !== hashedPassword) {
+        throw new Error('Invalid password');
+    }
+
+    return user;
+
+});
 const User = mongoose.model('User', UserSchema);
 
 export default User;
